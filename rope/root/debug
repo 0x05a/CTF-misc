@@ -1,0 +1,48 @@
+gef➤  c
+Continuing.
+[Attaching after process 16599 fork to child process 41799]
+[New inferior 2 (process 41799)]
+[Detaching after fork from parent process 16599]
+[Inferior 1 (process 16599) detached]
+[+] Request accepted fd 4, pid 1000
+
+Thread 2.1 "contact" received signal SIGSEGV, Segmentation fault.
+[Switching to process 41799]
+0x00005555555555e2 in ?? ()
+[ Legend: Modified register | Code | Heap | Stack | String ]
+──────────────────────────────────────────────────────────────────────────── registers ────
+$rax   : 0xd6              
+$rbx   : 0x0               
+$rcx   : 0x00007ffff7ebe4e0  →  0x6877fffff0003d48 ("H="?)
+$rdx   : 0x0               
+$rsp   : 0x00007fffffffe048  →  "baaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaaha[...]"
+$rbp   : 0x6161616161616161 ("aaaaaaaa"?)
+$rsi   : 0x00007fffffffe000  →  "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[...]"
+$rdi   : 0x4               
+$rip   : 0x00005555555555e2  →   ret 
+$r8    : 0x0               
+$r9    : 0x0               
+$r10   : 0x0               
+$r11   : 0x246             
+$r12   : 0x0000555555555180  →   xor ebp, ebp
+$r13   : 0x00007fffffffe1b0  →  0x0000000000000001
+$r14   : 0x0               
+$r15   : 0x0               
+$eflags: [ZERO carry PARITY adjust sign trap INTERRUPT direction overflow RESUME virtualx86 identification]
+$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
+──────────────────────────────────────────────────────────────────────────────── stack ────
+0x00007fffffffe048│+0x0000: "baaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaaha[...]"	 ← $rsp
+0x00007fffffffe050│+0x0008: "caaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaia[...]"
+0x00007fffffffe058│+0x0010: "daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja[...]"
+0x00007fffffffe060│+0x0018: "eaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaaka[...]"
+0x00007fffffffe068│+0x0020: "faaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaala[...]"
+0x00007fffffffe070│+0x0028: "gaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaama[...]"
+0x00007fffffffe078│+0x0030: "haaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaaaaaana[...]"
+0x00007fffffffe080│+0x0038: "iaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaaaaaanaaaaaaaoa[...]"
+────────────────────────────────────────────────────────────────────────── code:x86:64 ────
+   0x5555555555da                  je     0x5555555555e1
+   0x5555555555dc                  call   0x555555555070 <__stack_chk_fail@plt>
+   0x5555555555e1                  leave  
+ → 0x5555555555e2                  ret    
+[!] Cannot disassemble from $PC
+
